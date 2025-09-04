@@ -1,47 +1,28 @@
 # f25-team6
- JesusGarcia-Milestone1
 
-
-Ryan Cherukuri
- main
 ## Title
 > SpartanPro
 
 ## Team Members
- JesusGarcia-Milestone1
-> Jesus Garcia-Medina
+> Jesus Garcia-Medina  
 > Ryan Cherukuri
 
 ## Description
-> SpartanPro helps students connect with peer tutors across a wide range of classes. Students can schedule sessions at the times that fit their schedules, making tutoring more flexible and accessible. By matching students with fellow Spartans who are comfortable with the material, SpartanPro creates a supportive community where everyone can succeed. We are building this app to make sure no student has to struggle alon, especially in challenging courses where tutoring is scarce. 
+> SpartanPro helps students connect with peer tutors across a wide range of classes. Students can schedule sessions at times that fit their schedules, making tutoring flexible and accessible. By matching students with fellow Spartans who are comfortable with the material, SpartanPro creates a supportive community where everyone can succeed. We are building this app to make sure no student has to struggle alone, especially in challenging courses where tutoring is scarce.
 
 ## App Functions
-> Provider
-    > Create/Modify customer profile - Register as a tutor
-    > Create Services - Post their availibilty for tutoring sessions
-    > View Customer Statistics - View number of tutoring sessions, hours tutored, most tutored subjects, and view reviews
-    > Reply to reviews - Tutors will be able to reply to reviews
 
-> Ryan Cherukuri
+### Provider
+> Create/Modify customer profile – Register as a tutor  
+> Create Services – Post availability for tutoring sessions  
+> View Customer Statistics – View total sessions, hours tutored, most-tutored subjects, and average rating  
+> Reply to reviews – Tutors will be able to reply to reviews  
 
-> Jesus Garcia-Medina
-
-## Description 
-> Our application is a tutoring service called SpartanPro. This application exists so students may be able to acquire tutoring sessions for classes that may not have tutoring offered by the school. Our application also allows students to work around the tutors flexible hours compared to strict school tutoring hours. SpartanPro will be a useful tool for students who simply want 1 0n 1 tutoring, compared to group sessions schools usually offer.
-
-
-## App Functions
-Customer (the user with the customer role):
-
-1. Create/modify customer profile:
-      The customer shall be able to click their profile button, where their info will be displayed with an edit button to make changes. (email, password and subjects)
-
-2. View available services:
-     To view tutors for a certain subject, the customer will need to click on the profile button and under their profile info there will be a long list of subjects where the customer can click a + button to turn it into a check. A checked subject means when the customer returns to the homescreen, those specific subjects tutors will be listed.
-
-3. Subscribe to available services:
-     Alongside being able to subscribe to the subjects to show available tutors, the customer will also be able to click on a tutor's profile from the homescreen to book a tutoring time.
-
+### Customer (the user with the customer role)
+1. **Create/modify customer profile:** The customer can click their profile button, where their info will be displayed with an edit button to make changes (email, password, subjects).  
+2. **View available services:** To view tutors for a subject, the customer can click on the profile button and see a list of subjects to select. Checked subjects will determine which tutors are listed on the homescreen.  
+3. **Subscribe/book sessions:** Customers can subscribe to subjects and also book sessions directly from a tutor’s profile on the homescreen.  
+4. **Write reviews for subscribed services:** After completing a tutoring session, customers can write a review for their tutor by clicking on the tutor’s profile and selecting *Leave a Review*. This ensures reviews are authentic.  
 4. Write reviews for subscribed services:
      Only after a completed tutoring session will a customer be able to write a review for a tutor. The customer will be able to click on their previous tutor's profile, where they will be able to find a "leave a review" button. This will eliminate the chance of false reviews.
  main
