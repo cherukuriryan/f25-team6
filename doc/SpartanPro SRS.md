@@ -2,7 +2,7 @@
 ## For SpartanPro
 
 Version 0.1  
-Prepared by Ryan Cherukuri  
+Prepared by Ryan Cherukuri and Jesus Garcia-Medina  
 CSC340 
 9/17/2025
 
@@ -35,11 +35,11 @@ Table of Contents
     * 3.2.7 [Deadline](#327-deadline)
 
 ## Revision History
-| Name | Date    | Reason For Changes  | Version   |
-| ---- | ------- | ------------------- | --------- |
-| Ryan | 9/17    |  Initial SRS        |   1.0     |
-|      |         |                     |           |
-|      |         |                     |           |
+| Name  | Date    |          Reason For Changes             | Version   |
+| ----  | ------- | ----------------------------------------| --------- |
+| Ryan  | 9/17    |  Initial SRS                            |   1.0     |
+| Jesus | 9/17    |  added provider functional requirements |           |
+|       |         |                                         |           |
 
 ## 1. Introduction
 
@@ -98,6 +98,14 @@ FR4: Students will be able to modify their own profiles, including personal info
 
 FR5: The system shall allow students to leave ratings and reviews for tutors based on their learning experience.
 
+FR-P1: The system shall allow providers to create and edit a tutor profile with subject expertise and availability.
+
+FR-P2: The system shall allow providers to accept or reject session requests.
+
+FR-P3: The system shall allow providers to view and respond to student reviews.
+
+FR-P4: The system shall notify providers when a booking request is made.
+
 #### 3.1.1 User interfaces
 Web pages using HTML, CSS, and JavaScript designed for ease of use.
 
@@ -110,22 +118,25 @@ The SpartanPro system will be developed using Java JDK 21 for the backend runtim
 ### 3.2 Non Functional Requirements 
 
 #### 3.2.1 Performance
-If there are performance requirements for the product under various circumstances, state them here and explain their rationale, to help the developers understand the intent and make suitable design choices. Specify the timing relationships for real time systems. Make such requirements as specific as possible. You may need to state performance requirements for individual functional requirements or features.
+- NFR1: The SpartanPro system will consume less than 100 MB of memory during normal operation.  
+- NFR2: A student user will be able to search and view tutor profiles in less than 10 seconds.  
+- NFR3: A tutor (provider) will be able to update availability and profile information in less than 10 seconds. 
 
 #### 3.2.2 Security
-Specify any requirements regarding security or privacy issues surrounding use of the product or protection of the data used or created by the product. Define any user identity authentication requirements. Refer to any external policies or regulations containing security issues that affect the product. Define any security or privacy certifications that must be satisfied.
+- NFR4: The system will only be accessible to authorized users with a valid username and password.  
+- NFR5: All data transmitted between client and server will be encrypted using HTTPS.  
 
 #### 3.2.3 Reliability
-Specify the factors required to establish the required reliability of the software system at time of delivery.
+- NFR6: The system will provide at least 95% uptime during the academic semester.  
 
 #### 3.2.4 Availability
-Specify the factors required to guarantee a defined availability level for the entire system such as checkpoint, recovery, and restart.
+- NFR7: SpartanPro will be available 24/7 
 
 #### 3.2.5 Compliance
-Specify the requirements derived from existing standards or regulations
+- NFR8: The system will comply with UNCG’s IT security and privacy policies.  
 
 #### 3.2.6 Cost
-Specify monetary cost of the software product.
+- NFR9: The expected monetary cost for SpartanPro development is $0, as it is a course project
 
 #### 3.2.7 Deadline
-Specify schedule for delivery of the software product.
+- NFR10: The final product must be delivered and ready for demonstration by December 2025.  
