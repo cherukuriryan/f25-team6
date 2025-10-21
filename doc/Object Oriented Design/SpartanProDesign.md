@@ -73,14 +73,6 @@ Tutors can view and reply to feedback and ratings from students after completed 
 ## 3. UML Class Diagram
 *(Diagram placeholder — `class-diagram.png` in this same folder)*  
 
-### Class Overview
-- **User** — base class for Student, Tutor, and Admin; holds shared attributes (id, name, email, password).  
-- **Student** — inherits from User; stores session history and reviews.  
-- **Tutor** — inherits from User; includes expertise, rate, and availability.  
-- **Session** — links a student and a tutor; stores session date, time, and status.  
-- **Review** — connects a session with student feedback and ratings.  
-- **Message** — enables communication between student and tutor.  
-
 ---
 
 ## 4. Database Schema
