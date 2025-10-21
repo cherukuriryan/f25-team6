@@ -23,7 +23,7 @@ Oct 20, 2025
 | Name | Date | Reason For Changes | Version |
 |------|------|--------------------|---------|
 | Jesus Garcia-Medina | 10/20/2025 | Initial design draft | 1 |
-| Ryan Cherukuri | 10/20/2025 | Added Diagrams | 1.1 |
+| Ryan Cherukuri | 10/21/2025 | Added Diagrams | 1.1 |
 
 ---
 
@@ -35,8 +35,7 @@ The goal of SpartanPro is to make academic support accessible and efficient for 
 
 ## 2. Use Cases
 
-### 2.1 Use Case Model
-*(Diagram placeholder — `use-case.png` in this same folder)*  
+![Figure 2: SpartanPro Use Case Diagram](use-case.png)
 
 ---
 
@@ -71,11 +70,11 @@ Tutors can view and reply to feedback and ratings from students after completed 
 ---
 
 ## 3. UML Class Diagram
-*(Diagram placeholder — `class-diagram.png` in this same folder)*  
+![Figure 3: SpartanPro UML Class Diagram](class-diagram.png)   
 
 ---
 
 ## 4. Database Schema
-*(Diagram placeholder — `schema.png` in this same folder)*  
+![Figure 4: SpartanPro Database Schema](schema.png) 
 
 
