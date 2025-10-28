@@ -1,9 +1,9 @@
 package edu.uncg.spartanpro.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Provider {
@@ -16,6 +16,14 @@ public class Provider {
     private String email;
     private String bio;
     private String subjects;
+
+    @OneToMany(mappedBy = "provider", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties("provider")
+    private List<TutorService> services;
+
+    @OneToMany(mappedBy = "provider", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties("provider")
+    private List<Review> reviews;
 
     // Getters and Setters
     public Long getId() { return id; }
@@ -32,4 +40,10 @@ public class Provider {
 
     public String getSubjects() { return subjects; }
     public void setSubjects(String subjects) { this.subjects = subjects; }
+
+    public List<TutorService> getServices() { return services; }
+    public void setServices(List<TutorService> services) { this.services = services; }
+
+    public List<Review> getReviews() { return reviews; }
+    public void setReviews(List<Review> reviews) { this.reviews = reviews; }
 }
