@@ -2,6 +2,7 @@ package edu.uncg.spartanpro.controller;
 
 import edu.uncg.spartanpro.entity.Provider;
 import edu.uncg.spartanpro.service.ProviderService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,23 +17,37 @@ public class ProviderController {
         this.service = service;
     }
 
+    // Create a new provider
     @PostMapping
-    public Provider create(@RequestBody Provider provider) { return service.create(provider); }
-
-    @GetMapping
-    public List<Provider> getAll() { return service.getAll(); }
-
-    @GetMapping("/{id}")
-    public Provider getById(@PathVariable Long id) { return service.getById(id); }
-
-    @PutMapping("/{id}")
-    public Provider update(@PathVariable Long id, @RequestBody Provider provider) {
-        return service.update(id, provider);
+    public ResponseEntity<Provider> create(@RequestBody Provider provider) {
+        Provider created = service.create(provider);
+        return ResponseEntity.ok(created);
     }
 
+    // Get all providers
+    @GetMapping
+    public ResponseEntity<List<Provider>> getAll() {
+        return ResponseEntity.ok(service.getAll());
+    }
+
+    // Get provider by ID
+    @GetMapping("/{id}")
+    public ResponseEntity<Provider> getById(@PathVariable Long id) {
+        Provider provider = service.getById(id);
+        return ResponseEntity.ok(provider);
+    }
+
+    // Update provider by ID
+    @PutMapping("/{id}")
+    public ResponseEntity<Provider> update(@PathVariable Long id, @RequestBody Provider provider) {
+        Provider updated = service.update(id, provider);
+        return ResponseEntity.ok(updated);
+    }
+
+    // Delete provider by ID
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable Long id) {
+    public ResponseEntity<String> delete(@PathVariable Long id) {
         service.delete(id);
-        return "Provider deleted.";
+        return ResponseEntity.ok("Provider deleted.");
     }
 }
