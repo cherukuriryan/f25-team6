@@ -17,9 +17,11 @@ public class Review {
     private String providerReply;
     private LocalDateTime replyDate;
 
-    @ManyToOne
-    @JoinColumn(name = "provider_id")
-    @JsonIgnoreProperties({"services", "reviews"})
+    @ManyToOne(fetch = FetchType.EAGER)
+@JoinColumn(name = "provider_id")
+@JsonIgnoreProperties({"services", "reviews"})
+
+
     private Provider provider;
 
     @ManyToOne
