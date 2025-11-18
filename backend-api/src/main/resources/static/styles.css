@@ -556,3 +556,51 @@ textarea.input {
   margin-top: 10px;
   text-align: center;
 }
+.no-subject-box {
+    margin-top: 80px;
+    text-align: center;
+    color: #555;
+    font-size: 20px;
+}
+
+.no-subject-box h2 {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.profile-link {
+    color: #003399;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.profile-link:hover {
+    text-decoration: none;
+}
+
+.tutor-results {
+    margin-top: 30px;
+}
+
+.tutor-result-card {
+    display: flex;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    gap: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.tutor-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.result-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
