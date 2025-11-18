@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Find a Tutor – SpartanPro</title>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="logo">
+    <span class="logo-blue">Spartan</span><span class="logo-gold">Pro</span>
+    <span class="role">(Student)</span>
+  </div>
+
+  <nav class="nav-links">
+    <a href="find-tutor.html">Home</a>
+    <a class="btn small red" href="#">Logout</a>
+  </nav>
+</header>
+
+<main class="wrapper">
+
+  <h1 class="page-title">Find A Tutor</h1>
+
+  <div id="tutorHeader" class="subject-count" style="display:none;">
+    Available <span id="subjName"></span> Tutors: <b id="tutorCount"></b>
+  </div>
+
+  <div id="results"></div>
+
+  <footer class="footer">SpartanPro</footer>
+</main>
+
+<script src="js/api.js"></script>
+<script src="js/student.js"></script>
+
+<script>
+async function loadTutors() {
+  const tutors = await API.getProviders();
+  document.getElementById("tutorCount").textContent = tutors.length;
+
+  const box = document.getElementById("results");
+  box.innerHTML = "";
+
+  tutors.forEach(t => {
+    const c = document.createElement("div");
+    c.className = "tutor-result-card";
+
+    c.innerHTML = `
+      <div class="result-left">
+        <img src="assets/img/tutor1.jpg" class="tutor-photo">
+      </div>
+
+      <div class="result-mid">
+        <h3 class="tutor-name">
+          <img src="assets/img/icon-user2.png" class="icon-user">
+          ${t.name}
+          <span class="stars">★★★★★</span>
+        </h3>
+
+        <div class="tutor-detail">
+          <b>My Availability:</b><br>
+          ${t.availability || "–"}
+        </div>
+
+        <div class="tutor-detail">
+          <b>Courses:</b>
+          <ul>
+            <li>MAT 196</li>
+            <li>MAT 296</li>
+            <li>MAT 101</li>
+          </ul>
+        </div>
+
+        <div class="tutor-buttons">
+          <button class="btn small review-btn">Write a Review</button>
+          <button class="btn small review-btn">View Reviews</button>
+        </div>
+      </div>
+
+      <div class="result-right">
+        <button class="btn primary book-btn">Book With Me</button>
+      </div>
+    `;
+
+    box.appendChild(c);
+  });
+}
+loadTutors();
+</script>
+</body>
+</html>

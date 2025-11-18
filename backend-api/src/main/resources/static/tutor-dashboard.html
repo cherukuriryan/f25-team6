@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Tutor Dashboard – SpartanPro</title>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="logo">
+        <span class="logo-blue">Spartan</span><span class="logo-gold">Pro</span>
+        <span class="role">(Tutor)</span>
+    </div>
+
+    <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a class="btn small red" href="#">Logout</a>
+    </nav>
+</header>
+
+<main class="wrapper">
+
+    <h1 class="page-title">Tutor Dashboard</h1>
+
+    <!-- PROFILE / PROVIDER CARD -->
+    <section class="card">
+        <h2>Profile / Create Provider</h2>
+
+        <div class="grid-2">
+            <div>
+                <label class="label">Name</label>
+                <input class="input" id="p-name" placeholder="Dr. Smith">
+
+                <label class="label">Email</label>
+                <input class="input" id="p-email" placeholder="smith@uncg.edu">
+
+                <label class="label">Bio</label>
+                <textarea class="input" id="p-bio" placeholder="CS tutor focusing on data structures"></textarea>
+            </div>
+
+            <div>
+                <label class="label">Subjects</label>
+                <input class="input" id="p-subj" placeholder="Math, CS, Physics">
+
+                <button class="btn primary full" id="createProviderBtn">
+                    Save / Create Provider
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS CARD -->
+    <section class="card">
+        <h2>My Stats</h2>
+        <div id="stats" class="muted">
+            Create a provider, then view stats.
+        </div>
+    </section>
+
+    <!-- SERVICES CARD -->
+    <section class="card">
+        <h2>Services</h2>
+
+        <div class="grid-2">
+            <div>
+                <label class="label">Title</label>
+                <input class="input" id="svc-title" placeholder="MAT 196 Tutoring">
+
+                <label class="label">Description</label>
+                <textarea class="input" id="svc-desc" placeholder="Algebra, limits, derivatives"></textarea>
+
+                <button class="btn primary full" id="addServiceBtn">
+                    Add Service
+                </button>
+            </div>
+
+            <div>
+                <table class="table" id="svc-table">
+                    <thead>
+                        <tr><th>Title</th><th>Description</th></tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS CARD -->
+    <section class="card">
+        <h2>Reviews</h2>
+        <div id="reviews"></div>
+    </section>
+
+</main>
+
+<script src="js/api.js"></script>
+<script src="js/tutor.js"></script>
+
+</body>
+</html>
