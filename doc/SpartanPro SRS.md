@@ -37,8 +37,8 @@ Table of Contents
 ## Revision History
 | Name  | Date    |          Reason For Changes             | Version   |
 | ----  | ------- | ----------------------------------------| --------- |
-| Ryan  | 9/17    |  Initial SRS                            |   1.0     |
-| Jesus | 9/17    |  added provider functional requirements |           |
+| Ryan  | 12/10    | Implemented better functionality       |   4.0     |
+| Jesus | 12/10    |Completed tutor portion and tested code |    4.0       |
 |       |         |                                         |           |
 
 ## 1. Introduction
