@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +10,74 @@
 
 <body>
 
+<<<<<<< HEAD
 <header class="simple-header">
   <div class="logo">
     <span class="logo-blue">Spartan</span><span class="logo-gold">Pro</span>
+=======
+  <!-- HEADER LOGO -->
+  <header class="simple-header">
+    <div class="logo">
+      <span class="logo-blue">Spartan</span><span class="logo-gold">Pro</span>
+    </div>
+  </header>
+
+  <!-- LOGIN CONTAINER -->
+  <div class="auth-wrapper">
+
+    <div class="auth-card">
+
+      <h2 class="auth-title">Login</h2>
+
+      <form id="login-form" class="auth-form">
+        <label>Email :</label>
+        <input type="email" id="login-email" required>
+
+        <label>Password :</label>
+        <input type="password" id="login-password" required>
+
+        <button type="submit" class="btn primary full">Login</button>
+      </form>
+
+      <!-- Just a divider now -->
+      <hr class="divider" style="margin-top: 20px;">
+
+      <!-- SIGNUP SECTION -->
+      <h2 id="signup" class="auth-title">Create Account</h2>
+
+      <p class="center small">
+        Already a tutor?
+        <a href="tutor-login.html" class="link">Log in as Tutor</a>
+      </p>
+
+      <p class="center small">
+        Want to become a tutor?
+      </p>
+
+      <p class="center">
+        <a href="tutor-signup.html" class="btn small outline">Sign Up as Tutor</a>
+      </p>
+
+      <form id="signup-form" class="auth-form">
+
+        <label>Name :</label>
+        <input type="text" id="signup-name" required>
+
+        <label>Student Email :</label>
+        <input type="email" id="signup-email" required>
+
+        <label>Password :</label>
+        <input type="password" id="signup-password" required>
+
+        <label>Confirm Password :</label>
+        <input type="password" id="signup-confirm" required>
+
+        <button class="btn primary full">Sign Up as Student</button>
+
+      </form>
+
+    </div>
+>>>>>>> ddb89de0683d5573afc5f9b588f492919a9e2b9a
   </div>
 </header>
 
@@ -65,4 +131,5 @@
 <script src="js/login.js"></script>
 
 </body>
+
 </html>

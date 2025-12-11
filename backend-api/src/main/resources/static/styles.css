@@ -27,11 +27,21 @@ a {
 }
 
 .logo-blue {
+<<<<<<< HEAD
   color: #0046ad;         
 }
 
 .logo-gold {
   color: #eab308;         
+=======
+  color: #0046ad;
+  /* UNCG Blue */
+}
+
+.logo-gold {
+  color: #eab308;
+  /* UNCG Gold */
+>>>>>>> ddb89de0683d5573afc5f9b588f492919a9e2b9a
 }
 
 .role {
@@ -93,7 +103,8 @@ a {
 
 /* Page Titles */
 .page-title,
-h1, h2 {
+h1,
+h2 {
   text-align: center;
   margin-bottom: 24px;
 }
@@ -109,7 +120,7 @@ h1, h2 {
   background: #fff;
   padding: 28px 40px;
   width: 420px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
   border-radius: 10px;
 }
 
@@ -178,7 +189,7 @@ h1, h2 {
   padding: 20px;
   flex: 1;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .info-value {
@@ -205,7 +216,7 @@ h1, h2 {
   padding: 24px;
   border-radius: 8px;
   margin-top: 30px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .subjects-grid {
@@ -229,7 +240,7 @@ h1, h2 {
   gap: 20px;
   margin: 20px auto;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .tutor-photo {
@@ -271,137 +282,163 @@ h1, h2 {
   background: #ffffff;
   border-top: 1px solid #e5e5e5;
 }
+
 /* ---- GLOBAL ---- */
 body {
-    font-family: system-ui, sans-serif;
-    margin: 0;
-    background: #f7f7f7;
-    color: #222;
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  background: #f7f7f7;
+  color: #222;
 }
 
 .wrapper {
-    max-width: 1050px;
-    margin: 0 auto;
-    padding: 40px 20px;
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 40px 20px;
 }
 
 /* ---- LOGO ---- */
-.logo-blue { color: #003399; font-weight: 700; font-size: 28px; }
-.logo-gold { color: #DAA520; font-weight: 700; font-size: 28px; }
-.role { margin-left: 8px; font-size: 16px; color: #444; }
+.logo-blue {
+  color: #003399;
+  font-weight: 700;
+  font-size: 28px;
+}
+
+.logo-gold {
+  color: #DAA520;
+  font-weight: 700;
+  font-size: 28px;
+}
+
+.role {
+  margin-left: 8px;
+  font-size: 16px;
+  color: #444;
+}
 
 /* ---- HEADER ---- */
 .header {
-    background: white;
-    padding: 18px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
+  background: white;
+  padding: 18px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
 }
 
 .nav-links a {
-    margin-left: 20px;
-    text-decoration: none;
-    color: #003399;
-    font-weight: 500;
+  margin-left: 20px;
+  text-decoration: none;
+  color: #003399;
+  font-weight: 500;
 }
 
 /* ---- TITLES ---- */
 .page-title {
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 25px;
-    text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  text-align: center;
 }
 
 /* ---- CARDS ---- */
 .card {
-    background: #fff;
-    border-radius: 12px;
-    padding: 25px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-    margin-bottom: 35px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  margin-bottom: 35px;
 }
 
 .card h2 {
-    margin-top: 0;
-    font-size: 24px;
-    font-weight: 600;
+  margin-top: 0;
+  font-size: 24px;
+  font-weight: 600;
 }
 
 /* ---- FORM ELEMENTS ---- */
 .label {
-    font-weight: 600;
-    margin-bottom: 5px;
-    display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
 }
 
 .input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    margin-bottom: 18px;
-    font-size: 15px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 18px;
+  font-size: 15px;
 }
 
 textarea.input {
-    height: 80px;
-    resize: vertical;
+  height: 80px;
+  resize: vertical;
 }
 
 /* ---- BUTTONS ---- */
 .btn {
-    padding: 10px 18px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    background: #003399;
-    color: white;
-    font-size: 15px;
-    font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: #003399;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
 }
 
-.btn.small { padding: 7px 14px; font-size: 14px; }
-.btn.full { width: 100%; }
+.btn.small {
+  padding: 7px 14px;
+  font-size: 14px;
+}
+
+.btn.full {
+  width: 100%;
+}
 
 .btn.red {
-    background: #d40000;
+  background: #d40000;
 }
 
 .btn:hover {
-    opacity: 0.9;
+  opacity: 0.9;
 }
 
 /* ---- GRID ---- */
 .grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
 }
 
 /* ---- TABLE ---- */
 .table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
 }
 
-.table th, .table td {
-    border-bottom: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
+.table th,
+.table td {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
 }
 
 /* ---- FOOTER ---- */
 .footer {
-    text-align: center;
-    margin-top: 40px;
-    padding: 20px 0;
-    color: #666;
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px 0;
+  color: #666;
 }
 
+<<<<<<< HEAD
+=======
+/* FIXED BANNER LAYOUT */
+>>>>>>> ddb89de0683d5573afc5f9b588f492919a9e2b9a
 .top-banner {
   display: flex;
   justify-content: center;
@@ -437,59 +474,64 @@ textarea.input {
   margin-top: 5px;
 }
 
+<<<<<<< HEAD
+=======
+/* ======== General ======== */
+>>>>>>> ddb89de0683d5573afc5f9b588f492919a9e2b9a
 .centered {
-    text-align: center;
+  text-align: center;
 }
 
 .section {
-    margin-top: 40px;
-    margin-bottom: 40px;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .hero-img {
-    width: 80%;
-    max-width: 900px;
-    border-radius: 8px;
+  width: 80%;
+  max-width: 900px;
+  border-radius: 8px;
 }
 
 .banner-quote {
-    font-size: 15px;
-    margin: 8px 0;
+  font-size: 15px;
+  margin: 8px 0;
 }
 
 /* Tutor Section */
 .tutor-img {
-    width: 80%;
-    max-width: 550px;
-    border-radius: 8px;
+  width: 80%;
+  max-width: 550px;
+  border-radius: 8px;
 }
 
 .tutor-info {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 
 .two-column {
-    display: flex;
-    justify-content: center;
-    gap: 60px;
-    margin-top: 40px;
-    align-items: flex-start;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 40px;
+  align-items: flex-start;
 }
 
 .subject-box ul {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .group-img {
-    width: 300px;
-    border-radius: 8px;
+  width: 300px;
+  border-radius: 8px;
 }
 
 .right-img-box {
-    text-align: center;
-    margin-top: 10px;
+  text-align: center;
+  margin-top: 10px;
 }
+
 .wrapper {
   max-width: 900px;
   margin: 0 auto;
@@ -544,51 +586,59 @@ textarea.input {
   margin-top: 10px;
   text-align: center;
 }
+
 .no-subject-box {
-    margin-top: 80px;
-    text-align: center;
-    color: #555;
-    font-size: 20px;
+  margin-top: 80px;
+  text-align: center;
+  color: #555;
+  font-size: 20px;
 }
 
 .no-subject-box h2 {
-    font-weight: 600;
-    margin-bottom: 10px;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .profile-link {
-    color: #003399;
-    font-weight: bold;
-    text-decoration: underline;
+  color: #003399;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 .profile-link:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .tutor-results {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .tutor-result-card {
-    display: flex;
-    background: white;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 20px;
-    gap: 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  display: flex;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  gap: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .tutor-photo {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .result-right {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.auth-card .link {
+  color: #0046ad;
+  text-decoration: underline;
+  font-weight: 600;
+  cursor: pointer;
 }

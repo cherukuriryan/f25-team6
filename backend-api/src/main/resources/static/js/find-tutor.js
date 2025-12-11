@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 async function loadTutorPage() 
 {
 
@@ -7,11 +8,24 @@ async function loadTutorPage()
     if (!student)
          {
        
+=======
+async function loadTutorPage() {
+    
+    const student = Session.get("student");
+
+    if (!student) {
+>>>>>>> ddb89de0683d5573afc5f9b588f492919a9e2b9a
         document.getElementById("noSubjects").style.display = "block";
+        document.getElementById("results").innerHTML =
+            "<p>Please log in to find tutors.</p>";
         return;
     }
 
+<<<<<<< HEAD
    
+=======
+    
+>>>>>>> ddb89de0683d5573afc5f9b588f492919a9e2b9a
     const selectedSubjects = student.subjects || "";
 
     if (selectedSubjects.trim() === "") 
@@ -29,6 +43,7 @@ async function loadTutorPage()
     try {
         providers = await API.getProviders();
     } catch (err) {
+        console.error(err);
         document.getElementById("results").innerHTML =
             "<p>Error loading tutors.</p>";
         return;
@@ -43,18 +58,26 @@ async function loadTutorPage()
         subList.some(s => p.subjects.toLowerCase().includes(s))
     );
 
+<<<<<<< HEAD
     
     if (matching.length === 0) 
         {
+=======
+    if (matching.length === 0) {
+>>>>>>> ddb89de0683d5573afc5f9b588f492919a9e2b9a
         resultsBox.innerHTML =
             "<p>No tutors available for your selected subjects.</p>";
         return;
     }
 
     
+<<<<<<< HEAD
     matching.forEach(t => 
         {
 
+=======
+    matching.forEach(t => {
+>>>>>>> ddb89de0683d5573afc5f9b588f492919a9e2b9a
         const card = document.createElement("div");
         card.className = "tutor-result-card";
 

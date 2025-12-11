@@ -1,5 +1,3 @@
-
-
 const API_BASE = "http://localhost:8080";
 
 
@@ -30,6 +28,10 @@ async function apiPut(url, body) {
     return await res.json();
 }
 
+<<<<<<< HEAD
+=======
+/* ---------- API ENDPOINTS ---------- */
+>>>>>>> ddb89de0683d5573afc5f9b588f492919a9e2b9a
 
 const API = {
 
@@ -65,8 +67,9 @@ const API = {
  
 
     getReviewsForProvider: (providerId) =>
-        apiGet(`/api/reviews?providerId=${providerId}`),
+        apiGet(`/providers/${providerId}/reviews`),
 
+    
     createReview: (data) =>
         apiPost("/api/reviews", data),
 
@@ -89,7 +92,11 @@ const API = {
 };
 
 
+<<<<<<< HEAD
 
+=======
+/* ---------- SESSION STORAGE ---------- */
+>>>>>>> ddb89de0683d5573afc5f9b588f492919a9e2b9a
 
 const Session = {
     set(key, value) {
