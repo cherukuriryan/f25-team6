@@ -3,19 +3,16 @@ package edu.uncg.spartanpro.controller;
 import edu.uncg.spartanpro.entity.Provider;
 import edu.uncg.spartanpro.entity.Review;
 import edu.uncg.spartanpro.entity.TutorService;
-
 import edu.uncg.spartanpro.repository.ReviewRepository;
-
 import edu.uncg.spartanpro.service.ProviderService;
 import edu.uncg.spartanpro.service.TutorServiceService;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
-
+import java.util.Map;
 
 @RestController
 @RequestMapping("/providers")
@@ -25,7 +22,9 @@ public class ProviderController {
     private final TutorServiceService serviceService;
     private final ReviewRepository reviewRepo;
 
-    public ProviderController(ProviderService providerService, TutorServiceService serviceService, ReviewRepository reviewRepo) {
+    public ProviderController(ProviderService providerService,
+                              TutorServiceService serviceService,
+                              ReviewRepository reviewRepo) {
         this.providerService = providerService;
         this.serviceService = serviceService;
         this.reviewRepo = reviewRepo;
@@ -52,7 +51,7 @@ public class ProviderController {
         return providerService.getById(id);
     }
 
-    // Create a new Service for Provider
+    // Create a new Service 
     @PostMapping("/{providerId}/services")
     public TutorService createService(@PathVariable Long providerId, @RequestBody TutorService service) {
         return serviceService.createService(providerId, service);
@@ -63,27 +62,27 @@ public class ProviderController {
         return serviceService.getServicesByProvider(providerId);
     }
 
-    // View customer statistics
+    // View provider stats
     @GetMapping("/{providerId}/stats")
-public ResponseEntity<?> getProviderStats(@PathVariable Long providerId) {
-    List<TutorService> services = serviceService.getServicesByProvider(providerId);
-    List<Review> reviews = reviewRepo.findByProviderId(providerId);
+    public ResponseEntity<?> getProviderStats(@PathVariable Long providerId) {
+        List<TutorService> services = serviceService.getServicesByProvider(providerId);
+        List<Review> reviews = reviewRepo.findByProviderId(providerId);
 
-    int totalSessions = services.stream().mapToInt(TutorService::getCompletedSessions).sum();
-    int totalServices = services.size();
-    int totalReviews = reviews.size();
-    double avgRating = reviews.isEmpty() ? 0.0 :
-        reviews.stream().mapToInt(Review::getRating).average().orElse(0.0);
+        int totalSessions = services.stream().mapToInt(TutorService::getCompletedSessions).sum();
+        int totalServices = services.size();
+        int totalReviews = reviews.size();
+        double avgRating = reviews.isEmpty() ? 0.0 :
+                reviews.stream().mapToInt(Review::getRating).average().orElse(0.0);
 
-    String stats = String.format(
-        "Total Services: %d | Total Sessions: %d | Total Reviews: %d | Average Rating: %.1f",
-        totalServices, totalSessions, totalReviews, avgRating
-    );
+        String stats = String.format(
+                "Total Services: %d | Total Sessions: %d | Total Reviews: %d | Average Rating: %.1f",
+                totalServices, totalSessions, totalReviews, avgRating
+        );
 
-    return ResponseEntity.ok(stats);
-}
+        return ResponseEntity.ok(stats);
+    }
 
-    //Reply to reviews
+    // Reply to reviews
     @GetMapping("/{providerId}/reviews")
     public ResponseEntity<List<Review>> getReviewsByProvider(@PathVariable Long providerId) {
         List<Review> reviews = reviewRepo.findByProviderId(providerId);
@@ -92,7 +91,9 @@ public ResponseEntity<?> getProviderStats(@PathVariable Long providerId) {
     }
 
     @PostMapping("/{providerId}/reviews/{reviewId}/reply")
-    public Review replyToReview(@PathVariable Long providerId, @PathVariable Long reviewId, @RequestBody Review body) {
+    public Review replyToReview(@PathVariable Long providerId,
+                                @PathVariable Long reviewId,
+                                @RequestBody Review body) {
         Review review = reviewRepo.findById(reviewId)
                 .orElseThrow(() -> new RuntimeException("Review not found"));
         if (review.getProvider() != null && !review.getProvider().getId().equals(providerId))
@@ -101,5 +102,19 @@ public ResponseEntity<?> getProviderStats(@PathVariable Long providerId) {
         review.setProviderReply(body.getProviderReply());
         review.setReplyDate(LocalDateTime.now());
         return reviewRepo.save(review);
+    }
+
+    // ---------- PROVIDER LOGIN ----------
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody Map<String, String> body) {
+        String email = body.get("email");
+        String password = body.get("password");
+
+        try {
+            Provider provider = providerService.login(email, password);
+            return ResponseEntity.ok(provider);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(401).body(e.getMessage());
+        }
     }
 }

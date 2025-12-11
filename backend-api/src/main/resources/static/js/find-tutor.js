@@ -1,15 +1,15 @@
 async function loadTutorPage() {
-
-    // 1. Check login using localStorage (NOT server)
+    
     const student = Session.get("student");
 
     if (!student) {
-        // Show "no subjects" instead of redirecting
         document.getElementById("noSubjects").style.display = "block";
+        document.getElementById("results").innerHTML =
+            "<p>Please log in to find tutors.</p>";
         return;
     }
 
-    // 2. Check selected subjects
+    
     const selectedSubjects = student.subjects || "";
 
     if (selectedSubjects.trim() === "") {
@@ -21,11 +21,12 @@ async function loadTutorPage() {
         .split(",")
         .map(s => s.trim().toLowerCase());
 
-    // 3. Get all tutors
+    
     let providers = [];
     try {
         providers = await API.getProviders();
     } catch (err) {
+        console.error(err);
         document.getElementById("results").innerHTML =
             "<p>Error loading tutors.</p>";
         return;
@@ -34,22 +35,20 @@ async function loadTutorPage() {
     const resultsBox = document.getElementById("results");
     resultsBox.innerHTML = "";
 
-    // 4. Filter matches
+    
     const matching = providers.filter(p =>
         p.subjects &&
         subList.some(s => p.subjects.toLowerCase().includes(s))
     );
 
-    // 5. No tutor matches
     if (matching.length === 0) {
         resultsBox.innerHTML =
             "<p>No tutors available for your selected subjects.</p>";
         return;
     }
 
-    // 6. Render cards
+    
     matching.forEach(t => {
-
         const card = document.createElement("div");
         card.className = "tutor-result-card";
 
