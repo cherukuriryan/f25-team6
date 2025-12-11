@@ -1,5 +1,3 @@
-
-
 const API_BASE = "http://localhost:8080";
 
 /* ---------- BASIC HTTP HELPERS ---------- */
@@ -30,9 +28,7 @@ async function apiPut(url, body) {
     return await res.json();
 }
 
-/* ---------------------------------------------------------
-   MASTER API OBJECT — ALL ENDPOINTS
-----------------------------------------------------------*/
+/* ---------- API ENDPOINTS ---------- */
 
 const API = {
 
@@ -68,8 +64,9 @@ const API = {
     /* ---------- REVIEWS ---------- */
 
     getReviewsForProvider: (providerId) =>
-        apiGet(`/api/reviews?providerId=${providerId}`),
+        apiGet(`/providers/${providerId}/reviews`),
 
+    
     createReview: (data) =>
         apiPost("/api/reviews", data),
 
@@ -92,7 +89,7 @@ const API = {
 };
 
 
-/* ---------- SESSION STORAGE HELPERS ---------- */
+/* ---------- SESSION STORAGE ---------- */
 
 const Session = {
     set(key, value) {

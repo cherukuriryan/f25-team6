@@ -16,6 +16,7 @@ public class Provider {
     private String email;
     private String bio;
     private String subjects;
+    private String password;
 
     @OneToMany(mappedBy = "provider", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties("provider")
@@ -46,4 +47,7 @@ public class Provider {
 
     public List<Review> getReviews() { return reviews; }
     public void setReviews(List<Review> reviews) { this.reviews = reviews; }
+
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
 }
