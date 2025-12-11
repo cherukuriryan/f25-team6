@@ -12,7 +12,7 @@ document.getElementById("tutor-signup-form").addEventListener("submit", async (e
         const res = await API.createProvider(data);
         alert("Tutor profile created successfully!");
 
-        // redirect tutor to dashboard
+        
         window.location.href = "tutor-dashboard.html";
     } catch (err) {
         alert("Error creating tutor profile.");

@@ -1,18 +1,21 @@
-async function loadTutorPage() {
+async function loadTutorPage() 
+{
 
-    // 1. Check login using localStorage (NOT server)
+    
     const student = Session.get("student");
 
-    if (!student) {
-        // Show "no subjects" instead of redirecting
+    if (!student)
+         {
+       
         document.getElementById("noSubjects").style.display = "block";
         return;
     }
 
-    // 2. Check selected subjects
+   
     const selectedSubjects = student.subjects || "";
 
-    if (selectedSubjects.trim() === "") {
+    if (selectedSubjects.trim() === "") 
+        {
         document.getElementById("noSubjects").style.display = "block";
         return;
     }
@@ -21,7 +24,7 @@ async function loadTutorPage() {
         .split(",")
         .map(s => s.trim().toLowerCase());
 
-    // 3. Get all tutors
+    
     let providers = [];
     try {
         providers = await API.getProviders();
@@ -34,21 +37,23 @@ async function loadTutorPage() {
     const resultsBox = document.getElementById("results");
     resultsBox.innerHTML = "";
 
-    // 4. Filter matches
+    
     const matching = providers.filter(p =>
         p.subjects &&
         subList.some(s => p.subjects.toLowerCase().includes(s))
     );
 
-    // 5. No tutor matches
-    if (matching.length === 0) {
+    
+    if (matching.length === 0) 
+        {
         resultsBox.innerHTML =
             "<p>No tutors available for your selected subjects.</p>";
         return;
     }
 
-    // 6. Render cards
-    matching.forEach(t => {
+    
+    matching.forEach(t => 
+        {
 
         const card = document.createElement("div");
         card.className = "tutor-result-card";

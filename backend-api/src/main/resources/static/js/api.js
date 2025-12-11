@@ -2,7 +2,7 @@
 
 const API_BASE = "http://localhost:8080";
 
-/* ---------- BASIC HTTP HELPERS ---------- */
+
 
 async function apiGet(url) {
     const res = await fetch(API_BASE + url);
@@ -30,13 +30,10 @@ async function apiPut(url, body) {
     return await res.json();
 }
 
-/* ---------------------------------------------------------
-   MASTER API OBJECT — ALL ENDPOINTS
-----------------------------------------------------------*/
 
 const API = {
 
-    /* ---------- STUDENTS ---------- */
+  
 
     getStudents: () => apiGet("/api/students"),
     getStudent: (id) => apiGet(`/api/students/${id}`),
@@ -44,7 +41,7 @@ const API = {
     updateStudent: (id, data) => apiPut(`/api/students/${id}`, data),
 
 
-    /* ---------- TUTORS (PROVIDERS) ---------- */
+  
 
     getProviders: () => apiGet("/providers"),
     getProvider: (id) => apiGet(`/providers/${id}`),
@@ -52,7 +49,7 @@ const API = {
     updateProvider: (id, data) => apiPut(`/providers/${id}`, data),
 
 
-    /* ---------- TUTOR SERVICES ---------- */
+    
 
     createService: (providerId, data) =>
         apiPost(`/providers/${providerId}/services`, data),
@@ -65,7 +62,7 @@ const API = {
             .then(r => r.text()),
 
 
-    /* ---------- REVIEWS ---------- */
+ 
 
     getReviewsForProvider: (providerId) =>
         apiGet(`/api/reviews?providerId=${providerId}`),
@@ -74,7 +71,7 @@ const API = {
         apiPost("/api/reviews", data),
 
 
-    /* ---------- BOOKINGS ---------- */
+    
 
     createBooking: (data) =>
         apiPost("/api/bookings", data),
@@ -92,7 +89,7 @@ const API = {
 };
 
 
-/* ---------- SESSION STORAGE HELPERS ---------- */
+
 
 const Session = {
     set(key, value) {

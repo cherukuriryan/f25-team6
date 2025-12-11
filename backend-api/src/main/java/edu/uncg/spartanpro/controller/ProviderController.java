@@ -31,7 +31,7 @@ public class ProviderController {
         this.reviewRepo = reviewRepo;
     }
 
-    // Create / Modify Provider Profile
+    
     @PostMapping
     public Provider createProvider(@RequestBody Provider provider) {
         return providerService.create(provider);
@@ -52,7 +52,7 @@ public class ProviderController {
         return providerService.getById(id);
     }
 
-    // Create a new Service for Provider
+    
     @PostMapping("/{providerId}/services")
     public TutorService createService(@PathVariable Long providerId, @RequestBody TutorService service) {
         return serviceService.createService(providerId, service);
@@ -63,7 +63,7 @@ public class ProviderController {
         return serviceService.getServicesByProvider(providerId);
     }
 
-    // View customer statistics
+   
     @GetMapping("/{providerId}/stats")
 public ResponseEntity<?> getProviderStats(@PathVariable Long providerId) {
     List<TutorService> services = serviceService.getServicesByProvider(providerId);
@@ -83,7 +83,6 @@ public ResponseEntity<?> getProviderStats(@PathVariable Long providerId) {
     return ResponseEntity.ok(stats);
 }
 
-    //Reply to reviews
     @GetMapping("/{providerId}/reviews")
     public ResponseEntity<List<Review>> getReviewsByProvider(@PathVariable Long providerId) {
         List<Review> reviews = reviewRepo.findByProviderId(providerId);

@@ -1,6 +1,4 @@
-/* ===========================
-   GLOBAL RESET + BASE
-=========================== */
+
 * {
   margin: 0;
   padding: 0;
@@ -21,9 +19,7 @@ a {
   color: inherit;
 }
 
-/* ===========================
-   LOGO (Blue + Gold)
-=========================== */
+
 
 .logo {
   font-size: 28px;
@@ -31,11 +27,11 @@ a {
 }
 
 .logo-blue {
-  color: #0046ad;         /* UNCG Blue */
+  color: #0046ad;         
 }
 
 .logo-gold {
-  color: #eab308;         /* UNCG Gold */
+  color: #eab308;         
 }
 
 .role {
@@ -44,9 +40,7 @@ a {
   color: #555;
 }
 
-/* ===========================
-   HEADER (Matches Screenshot)
-=========================== */
+
 
 .header,
 .simple-header,
@@ -75,7 +69,7 @@ a {
   text-decoration: underline;
 }
 
-/* Logout Button */
+
 .btn.small {
   padding: 6px 14px;
   background: #0046ad;
@@ -88,9 +82,7 @@ a {
   background: #cc0000;
 }
 
-/* ===========================
-   MAIN WRAPPER
-=========================== */
+
 
 .wrapper,
 .page-wrapper {
@@ -106,9 +98,7 @@ h1, h2 {
   margin-bottom: 24px;
 }
 
-/* ===========================
-   AUTH CARD (Login / Signup)
-=========================== */
+
 .auth-wrapper {
   display: flex;
   justify-content: center;
@@ -155,22 +145,26 @@ h1, h2 {
   width: 100%;
 }
 
-/* ===========================
-   PROFILE PAGE
-=========================== */
+
 
 .profile-pic-box {
-  text-align: center;
-  margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 .profile-pic {
-  width: 110px;
-  height: 110px;
-  background: #ddd;
-  border-radius: 50%;
-  margin: 0 auto 10px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background-color: #ddd;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 10px;
 }
+
 
 .info-grid {
   display: flex;
@@ -204,9 +198,7 @@ h1, h2 {
   cursor: pointer;
 }
 
-/* ===========================
-   SUBJECT CHECKBOXES
-=========================== */
+
 
 .subjects-card {
   background: #fff;
@@ -222,9 +214,7 @@ h1, h2 {
   gap: 14px 20px;
 }
 
-/* ===========================
-   FIND TUTOR PAGE
-=========================== */
+
 
 .subject-count {
   font-size: 18px;
@@ -272,9 +262,7 @@ h1, h2 {
   border-radius: 6px;
 }
 
-/* ===========================
-   FOOTER
-=========================== */
+
 
 .footer {
   margin-top: auto;
@@ -413,7 +401,7 @@ textarea.input {
     padding: 20px 0;
     color: #666;
 }
-/* FIXED BANNER LAYOUT */
+
 .top-banner {
   display: flex;
   justify-content: center;
@@ -448,7 +436,7 @@ textarea.input {
 .banner-btn {
   margin-top: 5px;
 }
-/* ======== General ======== */
+
 .centered {
     text-align: center;
 }
@@ -480,7 +468,7 @@ textarea.input {
     margin-top: 10px;
 }
 
-/* ======== TWO COLUMN LAYOUT ======== */
+
 .two-column {
     display: flex;
     justify-content: center;

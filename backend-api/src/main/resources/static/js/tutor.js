@@ -2,7 +2,7 @@ async function loadTutorPage() {
 
     const student = JSON.parse(localStorage.getItem("student"));
 
-    // If not logged in → stop BUT DO NOT redirect
+    
     if (!student) {
         document.getElementById("noSubjects").style.display = "block";
         document.getElementById("results").innerHTML =
