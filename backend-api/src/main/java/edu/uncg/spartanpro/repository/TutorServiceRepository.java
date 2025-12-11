@@ -5,5 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface TutorServiceRepository extends JpaRepository<TutorService, Long> {
-    List<TutorService> findByProviderId(Long providerId);
+
+
+    List<TutorService> findByProvider_Id(Long providerId);
 }

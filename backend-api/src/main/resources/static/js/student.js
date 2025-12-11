@@ -146,7 +146,7 @@ picInput.addEventListener("change", function () {
     const reader = new FileReader();
 
     reader.onload = async function (e) {
-        const imgData = e.target.result; // Base64 string
+        const imgData = e.target.result; 
 
         try {
             // Save to backend

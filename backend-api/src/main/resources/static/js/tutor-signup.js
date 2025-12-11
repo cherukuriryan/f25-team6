@@ -1,29 +1,41 @@
-document.getElementById("tutor-signup-form").addEventListener("submit", async (e) => {
-    e.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("tutor-signup-form");
 
-    const data = {
-        name: document.getElementById("t-name").value.trim(),
-        email: document.getElementById("t-email").value.trim(),
-        password: document.getElementById("t-password").value.trim(),
-        subjects: document.getElementById("t-subjects").value.trim(),
-        bio: document.getElementById("t-bio").value.trim()
-    };
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-    try {
-        const provider = await API.createProvider(data);
-        alert("Tutor profile created successfully!");
+        const name = document.getElementById("t-name").value.trim();
+        const email = document.getElementById("t-email").value.trim();
+        const password = document.getElementById("t-password").value.trim();
+        const confirm = document.getElementById("t-confirm").value.trim();
+        const subjects = document.getElementById("t-subjects").value.trim();
+        const bio = document.getElementById("t-bio").value.trim();
 
-<<<<<<< HEAD
-        
-=======
-        // store logged-in provider info
-        localStorage.setItem("provider", JSON.stringify(provider));
+        if (password !== confirm) {
+            alert("Passwords do not match.");
+            return;
+        }
 
-        // redirect tutor to dashboard
->>>>>>> ddb89de0683d5573afc5f9b588f492919a9e2b9a
-        window.location.href = "tutor-dashboard.html";
-    } catch (err) {
-        alert("Error creating tutor profile.");
-        console.error(err);
-    }
+        const tutorData = { name, email, password, subjects, bio };
+
+        try {
+            const res = await fetch("http://localhost:8080/providers", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(tutorData)
+            });
+
+            if (!res.ok) {
+                alert("Error creating tutor account.");
+                return;
+            }
+
+            alert("Tutor account created successfully!");
+            window.location.href = "tutor-login.html";
+
+        } catch (err) {
+            console.error(err);
+            alert("Network error.");
+        }
+    });
 });

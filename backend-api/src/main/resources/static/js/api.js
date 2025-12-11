@@ -28,31 +28,22 @@ async function apiPut(url, body) {
     return await res.json();
 }
 
-<<<<<<< HEAD
-=======
-/* ---------- API ENDPOINTS ---------- */
->>>>>>> ddb89de0683d5573afc5f9b588f492919a9e2b9a
+
 
 const API = {
-
-  
-
+    // ---- STUDENTS ----
     getStudents: () => apiGet("/api/students"),
     getStudent: (id) => apiGet(`/api/students/${id}`),
     createStudent: (data) => apiPost("/api/students", data),
     updateStudent: (id, data) => apiPut(`/api/students/${id}`, data),
 
-
-  
-
+    // ---- PROVIDERS ----
     getProviders: () => apiGet("/providers"),
     getProvider: (id) => apiGet(`/providers/${id}`),
     createProvider: (data) => apiPost("/providers", data),
     updateProvider: (id, data) => apiPut(`/providers/${id}`, data),
 
-
-    
-
+    // ---- SERVICES ----
     createService: (providerId, data) =>
         apiPost(`/providers/${providerId}/services`, data),
 
@@ -60,22 +51,16 @@ const API = {
         apiGet(`/providers/${providerId}/services`),
 
     getProviderStats: (providerId) =>
-        fetch(`${API_BASE}/providers/${providerId}/stats`)
-            .then(r => r.text()),
+        fetch(`${API_BASE}/providers/${providerId}/stats`).then(r => r.text()),
 
-
- 
-
+    // ---- REVIEWS ----
     getReviewsForProvider: (providerId) =>
         apiGet(`/providers/${providerId}/reviews`),
 
-    
     createReview: (data) =>
         apiPost("/api/reviews", data),
 
-
-    
-
+    // ---- BOOKINGS ----
     createBooking: (data) =>
         apiPost("/api/bookings", data),
 
@@ -92,11 +77,6 @@ const API = {
 };
 
 
-<<<<<<< HEAD
-
-=======
-/* ---------- SESSION STORAGE ---------- */
->>>>>>> ddb89de0683d5573afc5f9b588f492919a9e2b9a
 
 const Session = {
     set(key, value) {
@@ -105,8 +85,11 @@ const Session = {
 
     get(key) {
         const raw = localStorage.getItem(key);
-        try { return JSON.parse(raw); }
-        catch { return raw; }
+        try {
+            return JSON.parse(raw);
+        } catch {
+            return raw;
+        }
     },
 
     clear() {

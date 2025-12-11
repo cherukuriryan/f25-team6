@@ -1,4 +1,6 @@
-
+/* ===========================
+   GLOBAL RESET + BASE
+=========================== */
 * {
   margin: 0;
   padding: 0;
@@ -19,7 +21,9 @@ a {
   color: inherit;
 }
 
-
+/* ===========================
+   LOGO (Blue + Gold)
+=========================== */
 
 .logo {
   font-size: 28px;
@@ -27,13 +31,6 @@ a {
 }
 
 .logo-blue {
-<<<<<<< HEAD
-  color: #0046ad;         
-}
-
-.logo-gold {
-  color: #eab308;         
-=======
   color: #0046ad;
   /* UNCG Blue */
 }
@@ -41,7 +38,6 @@ a {
 .logo-gold {
   color: #eab308;
   /* UNCG Gold */
->>>>>>> ddb89de0683d5573afc5f9b588f492919a9e2b9a
 }
 
 .role {
@@ -49,7 +45,6 @@ a {
   margin-left: 8px;
   color: #555;
 }
-
 
 
 .header,
@@ -79,7 +74,7 @@ a {
   text-decoration: underline;
 }
 
-
+/* Logout Button */
 .btn.small {
   padding: 6px 14px;
   background: #0046ad;
@@ -92,7 +87,9 @@ a {
   background: #cc0000;
 }
 
-
+/* ===========================
+   MAIN WRAPPER
+=========================== */
 
 .wrapper,
 .page-wrapper {
@@ -109,7 +106,9 @@ h2 {
   margin-bottom: 24px;
 }
 
-
+/* ===========================
+   AUTH CARD (Login / Signup)
+=========================== */
 .auth-wrapper {
   display: flex;
   justify-content: center;
@@ -156,26 +155,22 @@ h2 {
   width: 100%;
 }
 
-
+/* ===========================
+   PROFILE PAGE
+=========================== */
 
 .profile-pic-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    justify-content: center;
-    margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .profile-pic {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    background-color: #ddd;
-    background-size: cover;
-    background-position: center;
-    margin-bottom: 10px;
+  width: 110px;
+  height: 110px;
+  background: #ddd;
+  border-radius: 50%;
+  margin: 0 auto 10px;
 }
-
 
 .info-grid {
   display: flex;
@@ -209,7 +204,9 @@ h2 {
   cursor: pointer;
 }
 
-
+/* ===========================
+   SUBJECT CHECKBOXES
+=========================== */
 
 .subjects-card {
   background: #fff;
@@ -225,7 +222,9 @@ h2 {
   gap: 14px 20px;
 }
 
-
+/* ===========================
+   FIND TUTOR PAGE
+=========================== */
 
 .subject-count {
   font-size: 18px;
@@ -273,7 +272,9 @@ h2 {
   border-radius: 6px;
 }
 
-
+/* ===========================
+   FOOTER
+=========================== */
 
 .footer {
   margin-top: auto;
@@ -435,10 +436,7 @@ textarea.input {
   color: #666;
 }
 
-<<<<<<< HEAD
-=======
-/* FIXED BANNER LAYOUT */
->>>>>>> ddb89de0683d5573afc5f9b588f492919a9e2b9a
+
 .top-banner {
   display: flex;
   justify-content: center;
@@ -474,10 +472,7 @@ textarea.input {
   margin-top: 5px;
 }
 
-<<<<<<< HEAD
-=======
 /* ======== General ======== */
->>>>>>> ddb89de0683d5573afc5f9b588f492919a9e2b9a
 .centered {
   text-align: center;
 }
@@ -509,7 +504,7 @@ textarea.input {
   margin-top: 10px;
 }
 
-
+/* ======== TWO COLUMN LAYOUT ======== */
 .two-column {
   display: flex;
   justify-content: center;
@@ -641,4 +636,45 @@ textarea.input {
   text-decoration: underline;
   font-weight: 600;
   cursor: pointer;
+}
+.profile-pic {
+  background-position: center !important;
+  background-size: cover !important;
+}
+/* =========================
+   MODAL OVERLAY
+========================= */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none; /* hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* =========================
+   MODAL CONTENT
+========================= */
+.modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    width: 500px;
+    max-width: 90%;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.modal textarea {
+    width: 100%;
+    height: 120px;
+    margin-bottom: 15px;
+}
+
+.modal .btn {
+    margin-right: 10px;
 }

@@ -1,8 +1,7 @@
 package edu.uncg.spartanpro.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class TutorService {
@@ -13,14 +12,21 @@ public class TutorService {
 
     private String title;
     private String description;
-    private int completedSessions;
 
+    private int completedSessions = 0;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "provider_id")
-    @JsonIgnoreProperties({"services", "reviews"})
+    @JsonIgnoreProperties({
+            "services",
+            "reviews",
+            "hibernateLazyInitializer",
+            "handler"
+    })
     private Provider provider;
-    // Getters and Setters
+
+
+    // GETTERS + SETTERS
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -29,7 +35,6 @@ public class TutorService {
 
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
-
 
     public int getCompletedSessions() { return completedSessions; }
     public void setCompletedSessions(int completedSessions) { this.completedSessions = completedSessions; }

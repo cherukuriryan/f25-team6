@@ -9,96 +9,146 @@
 
 <body>
 
-<!-- HEADER -->
-<header class="header">
+  <!-- =========================
+          REPLY MODAL
+  ========================= -->
+  <div id="replyModal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <h2>Reply to Review</h2>
+
+      <textarea id="replyText" class="input" placeholder="Write your reply..."></textarea>
+
+      <div style="margin-top:10px; display:flex; gap:10px; justify-content:flex-end;">
+        <button class="btn primary" id="sendReplyBtn">Send Reply</button>
+        <button class="btn red" id="cancelReplyBtn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header">
     <div class="logo">
-        <span class="logo-blue">Spartan</span><span class="logo-gold">Pro</span>
-        <span class="role">(Tutor)</span>
+      <span class="logo-blue">Spartan</span><span class="logo-gold">Pro</span>
+      <span class="role">(Tutor)</span>
     </div>
 
     <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a id="tutor-logout" class="btn small red" href="#">Logout</a>
+      <a href="index.html">Home</a>
+      <a id="logout-btn" class="btn small red" href="#">Logout</a>
     </nav>
-</header>
+  </header>
 
-<main class="wrapper">
+  <main class="wrapper">
 
     <h1 class="page-title">Tutor Dashboard</h1>
 
-
+    <!-- PROFILE CARD -->
     <section class="card">
-        <h2>Profile / Provider Info</h2>
+      <h2>Profile / Provider Info</h2>
 
-        <div class="grid-2">
-            <div>
-                <label class="label">Name</label>
-                <input class="input" id="p-name" placeholder="Dr. Smith">
+      <div class="grid-2">
+        <div>
 
-                <label class="label">Email</label>
-                <input class="input" id="p-email" placeholder="smith@uncg.edu">
+          <div class="profile-pic-box">
+            <div id="tutorPic" class="profile-pic"></div>
+            <button class="btn small" id="changeTutorPicBtn">Add Profile Picture</button>
+            <input type="file" id="tutorPicInput" accept="image/*" style="display:none;">
+          </div>
 
-                <label class="label">Bio</label>
-                <textarea class="input" id="p-bio" placeholder="CS tutor focusing on data structures"></textarea>
-            </div>
+          <label class="label">Name</label>
+          <input class="input" id="p-name" placeholder="John Doe">
 
-            <div>
-                <label class="label">Subjects</label>
-                <input class="input" id="p-subj" placeholder="Math, CS, Physics">
+          <label class="label">Email</label>
+          <input class="input" id="p-email" placeholder="email@example.com">
 
-                <button class="btn primary full" id="createProviderBtn">
-                    Save Provider Profile
-                </button>
-            </div>
+          <label class="label">Bio</label>
+          <textarea class="input" id="p-bio" placeholder="Tell students about your tutoring experience"></textarea>
         </div>
-    </section>
 
-    <!-- STATS CARD -->
-    <section class="card">
-        <h2>My Stats</h2>
-        <div id="stats" class="muted">
-            Create or update your provider profile, then view stats.
+        <div>
+          <label class="label">Subjects</label>
+          <input class="input" id="p-subjects" placeholder="Math, CS, Physics">
+
+          <button class="btn primary full" id="save-profile-btn">
+            Save Profile
+          </button>
         </div>
+      </div>
     </section>
 
-    <!-- SERVICES CARD -->
+    <!-- AVAILABILITY -->
     <section class="card">
-        <h2>Services</h2>
+      <h2>My Availability</h2>
 
-        <div class="grid-2">
-            <div>
-                <label class="label">Title</label>
-                <input class="input" id="svc-title" placeholder="MAT 196 Tutoring">
+      <div class="grid-2" style="align-items:center; margin-bottom:10px;">
 
-                <label class="label">Description</label>
-                <textarea class="input" id="svc-desc" placeholder="Algebra, limits, derivatives"></textarea>
-
-                <button class="btn primary full" id="addServiceBtn">
-                    Add Service
-                </button>
-            </div>
-
-            <div>
-                <table class="table" id="svc-table">
-                    <thead>
-                        <tr><th>Title</th><th>Description</th></tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
+        <div>
+          <label for="slot-start" class="label">
+            Start Time <span style="font-size:12px; color:#777;">(30 min intervals only)</span>
+          </label>
+          <input type="datetime-local" id="slot-start" class="input">
         </div>
+
+        <div>
+          <label for="slot-end" class="label">
+            End Time <span style="font-size:12px; color:#777;">(30 min intervals only)</span>
+          </label>
+          <input type="datetime-local" id="slot-end" class="input">
+        </div>
+
+      </div>
+
+      <button class="btn primary full" id="add-slot-btn">Add Available Slot</button>
+
+      <div id="slot-list" style="margin-top:15px;"></div>
     </section>
 
-    <!-- REVIEWS CARD -->
+    <!-- =========================
+         UPCOMING BOOKINGS
+    ========================== -->
     <section class="card">
-        <h2>Reviews</h2>
-        <div id="reviews"></div>
+      <h2>Upcoming Bookings</h2>
+      <div id="booking-list" class="booking-list"></div>
     </section>
 
-</main>
+    <!-- SERVICES -->
+    <section class="card">
+      <h2>Services</h2>
 
-<script src="js/api.js"></script>
-<script src="js/tutor.js"></script>
+      <div class="grid-2">
+        <div>
+          <label class="label">Service Title</label>
+          <input class="input" id="svc-title" placeholder="MAT 196 Tutoring">
+
+          <label class="label">Description</label>
+          <textarea class="input" id="svc-desc" placeholder="Algebra, limits, derivatives"></textarea>
+
+          <button class="btn primary full" id="add-service-btn">
+            Add Service
+          </button>
+        </div>
+
+        <div>
+          <table class="table">
+            <thead>
+              <tr><th>Title</th><th>Description</th></tr>
+            </thead>
+            <tbody id="svc-table"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="card">
+      <h2>Reviews</h2>
+      <div id="reviews"></div>
+    </section>
+
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/tutor-dashboard.js"></script>
 
 </body>
 </html>

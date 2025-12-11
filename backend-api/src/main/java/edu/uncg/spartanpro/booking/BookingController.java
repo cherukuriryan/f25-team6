@@ -1,49 +1,76 @@
 package edu.uncg.spartanpro.booking;
 
-import org.springframework.http.HttpStatus;
+import edu.uncg.spartanpro.availability.TutorSlot;
+import edu.uncg.spartanpro.availability.TutorSlotRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/bookings")
-@CrossOrigin
-public class BookingController
- {
-    private final BookingRepository repo;
-    public BookingController(BookingRepository repo)
-     { this.repo = repo; }
+@CrossOrigin(origins = "*")
+public class BookingController {
 
-    @PostMapping @ResponseStatus(HttpStatus.CREATED)
-    public Booking create(@RequestBody Booking b) 
-    {
-        if (b.getStudentId()==null || b.getProviderId()==null || b.getSlotId()==null)
-            throw new IllegalArgumentException("studentId, providerId, slotId are required");
-        if (b.getStatus()==null) b.setStatus("pending");
-        return repo.save(b);
+    @Autowired
+    private BookingRepository bookingRepo;
+
+    @Autowired
+    private TutorSlotRepository slotRepo;  
+
+   
+    @PostMapping
+    public Booking createBooking(@RequestBody Booking booking) {
+
+        // Mark slot as booked
+        TutorSlot slot = slotRepo.findById(booking.getSlotId()).orElse(null);
+        if (slot != null) {
+            slot.setBooked(true);
+            slotRepo.save(slot);
+
+            
+            if (booking.getProviderId() == null) {
+                booking.setProviderId(slot.getProviderId());
+            }
+        }
+
+        return bookingRepo.save(booking);
     }
 
-    @GetMapping
-    public List<Booking> list(@RequestParam(required=false) Long studentId,
- @RequestParam(required=false) Long providerId)
-     {
-        if (studentId  != null) return repo.findByStudentId(studentId);
-        if (providerId != null) return repo.findByProviderId(providerId);
-        return repo.findAll();
+   
+    @GetMapping("/provider/{providerId}")
+    public List<Booking> getBookingsByProvider(@PathVariable Long providerId) {
+        return bookingRepo.findByProviderId(providerId);
     }
 
+    /* =========================
+       GET BOOKINGS FOR STUDENT
+    ========================== */
+    @GetMapping("/student/{studentId}")
+    public List<Booking> getBookingsByStudent(@PathVariable Long studentId) {
+        return bookingRepo.findByStudentId(studentId);
+    }
+
+    /* =========================
+       GET A SINGLE BOOKING
+    ========================== */
     @GetMapping("/{id}")
-    public Booking get(@PathVariable Long id)
-     { return repo.findById(id).orElseThrow(); }
-
-    @PutMapping("/{id}/status")
-    public Booking setStatus(@PathVariable Long id, @RequestParam String status)
-     {
-        Booking b = repo.findById(id).orElseThrow();
-        b.setStatus(status);
-        return repo.save(b);
+    public Booking getBooking(@PathVariable Long id) {
+        return bookingRepo.findById(id).orElse(null);
     }
 
-    @DeleteMapping("/{id}") @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long id)
-     { repo.deleteById(id); }
+    /* =========================
+       UPDATE BOOKING STATUS
+    ========================== */
+    @PatchMapping("/{id}")
+    public Booking updateBookingStatus(
+            @PathVariable Long id,
+            @RequestBody String status
+    ) {
+        Booking b = bookingRepo.findById(id).orElse(null);
+        if (b == null) return null;
+
+        b.setStatus(status.replace("\"", ""));
+        return bookingRepo.save(b);
+    }
 }

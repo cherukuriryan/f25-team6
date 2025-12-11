@@ -8,6 +8,7 @@ import java.util.List;
 
 @Service
 public class ProviderService {
+
     private final ProviderRepository repo;
 
     public ProviderService(ProviderRepository repo) {
@@ -27,34 +28,32 @@ public class ProviderService {
                 .orElseThrow(() -> new RuntimeException("Provider not found"));
     }
 
-    public Provider update(Long id, Provider updated) {
-        Provider existing = getById(id);
-        existing.setName(updated.getName());
-        existing.setEmail(updated.getEmail());
-        existing.setBio(updated.getBio());
-        existing.setSubjects(updated.getSubjects());
-
-    
-        if (updated.getPassword() != null && !updated.getPassword().isBlank()) {
-            existing.setPassword(updated.getPassword());
-        }
-
-        return repo.save(existing);
-    }
-
-    public void delete(Long id) {
-        repo.deleteById(id);
-    }
-
-    // ---------- LOGIN FOR TUTORS ----------
     public Provider login(String email, String password) {
         Provider provider = repo.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Provider not found"));
 
-        if (provider.getPassword() == null || !provider.getPassword().equals(password)) {
+        if (!provider.getPassword().equals(password)) {
             throw new RuntimeException("Invalid password");
         }
 
         return provider;
+    }
+
+    public Provider update(Long id, Provider updated) {
+        Provider p = getById(id);
+
+        p.setName(updated.getName());
+        p.setEmail(updated.getEmail());
+        p.setBio(updated.getBio());
+        p.setSubjects(updated.getSubjects());
+
+        
+        p.setProfilePic(updated.getProfilePic());
+
+        if (updated.getPassword() != null && !updated.getPassword().isBlank()) {
+            p.setPassword(updated.getPassword());
+        }
+
+        return repo.save(p);
     }
 }
