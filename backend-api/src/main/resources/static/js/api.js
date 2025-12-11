@@ -1,6 +1,6 @@
 const API_BASE = "http://localhost:8080";
 
-/* ---------- BASIC HTTP HELPERS ---------- */
+
 
 async function apiGet(url) {
     const res = await fetch(API_BASE + url);
@@ -28,28 +28,22 @@ async function apiPut(url, body) {
     return await res.json();
 }
 
-/* ---------- API ENDPOINTS ---------- */
+
 
 const API = {
-
-    /* ---------- STUDENTS ---------- */
-
+    // ---- STUDENTS ----
     getStudents: () => apiGet("/api/students"),
     getStudent: (id) => apiGet(`/api/students/${id}`),
     createStudent: (data) => apiPost("/api/students", data),
     updateStudent: (id, data) => apiPut(`/api/students/${id}`, data),
 
-
-    /* ---------- TUTORS (PROVIDERS) ---------- */
-
+    // ---- PROVIDERS ----
     getProviders: () => apiGet("/providers"),
     getProvider: (id) => apiGet(`/providers/${id}`),
     createProvider: (data) => apiPost("/providers", data),
     updateProvider: (id, data) => apiPut(`/providers/${id}`, data),
 
-
-    /* ---------- TUTOR SERVICES ---------- */
-
+    // ---- SERVICES ----
     createService: (providerId, data) =>
         apiPost(`/providers/${providerId}/services`, data),
 
@@ -57,22 +51,16 @@ const API = {
         apiGet(`/providers/${providerId}/services`),
 
     getProviderStats: (providerId) =>
-        fetch(`${API_BASE}/providers/${providerId}/stats`)
-            .then(r => r.text()),
+        fetch(`${API_BASE}/providers/${providerId}/stats`).then(r => r.text()),
 
-
-    /* ---------- REVIEWS ---------- */
-
+    // ---- REVIEWS ----
     getReviewsForProvider: (providerId) =>
         apiGet(`/providers/${providerId}/reviews`),
 
-    
     createReview: (data) =>
         apiPost("/api/reviews", data),
 
-
-    /* ---------- BOOKINGS ---------- */
-
+    // ---- BOOKINGS ----
     createBooking: (data) =>
         apiPost("/api/bookings", data),
 
@@ -89,7 +77,6 @@ const API = {
 };
 
 
-/* ---------- SESSION STORAGE ---------- */
 
 const Session = {
     set(key, value) {
@@ -98,8 +85,11 @@ const Session = {
 
     get(key) {
         const raw = localStorage.getItem(key);
-        try { return JSON.parse(raw); }
-        catch { return raw; }
+        try {
+            return JSON.parse(raw);
+        } catch {
+            return raw;
+        }
     },
 
     clear() {

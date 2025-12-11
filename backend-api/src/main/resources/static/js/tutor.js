@@ -1,29 +1,76 @@
+const API_BASE = "http://localhost:8080";
+
+const API = {
+    updateProvider: async (id, body) => {
+        const res = await fetch(`${API_BASE}/providers/${id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body)
+        });
+        return res.json();
+    },
+
+    createProvider: async (body) => {
+        const res = await fetch(`${API_BASE}/providers`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body)
+        });
+        return res.json();
+    },
+
+    getProviderStats: async (id) => {
+        const res = await fetch(`${API_BASE}/providers/${id}/stats`);
+        return res.text();
+    },
+
+    getServicesForProvider: async (id) => {
+        const res = await fetch(`${API_BASE}/providers/${id}/services`);
+        return res.json();
+    },
+
+    createService: async (id, body) => {
+        const res = await fetch(`${API_BASE}/providers/${id}/services`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body)
+        });
+        return res.json();
+    },
+
+    getReviewsForProvider: async (id) => {
+        const res = await fetch(`${API_BASE}/providers/${id}/reviews`);
+        return res.json();
+    }
+};
+
+// ------------------------------
+// LOAD DASHBOARD
+// ------------------------------
 let currentProvider = null;
 
-// ---------- LOAD DASHBOARD ----------
 async function initTutorDashboard() {
     const stored = localStorage.getItem("provider");
     if (!stored) {
-        
         window.location.href = "tutor-login.html";
         return;
     }
 
     currentProvider = JSON.parse(stored);
 
-    
     document.getElementById("p-name").value = currentProvider.name || "";
     document.getElementById("p-email").value = currentProvider.email || "";
     document.getElementById("p-bio").value = currentProvider.bio || "";
     document.getElementById("p-subj").value = currentProvider.subjects || "";
 
-    
     await loadStats();
     await loadServices();
     await loadReviews();
 }
 
-
+// ------------------------------
+// SAVE PROVIDER PROFILE
+// ------------------------------
 document.getElementById("createProviderBtn").addEventListener("click", async () => {
     const body = {
         name: document.getElementById("p-name").value.trim(),
@@ -35,10 +82,8 @@ document.getElementById("createProviderBtn").addEventListener("click", async () 
     try {
         let updated;
         if (currentProvider && currentProvider.id) {
-            
             updated = await API.updateProvider(currentProvider.id, body);
         } else {
-           
             updated = await API.createProvider(body);
         }
 
@@ -55,7 +100,9 @@ document.getElementById("createProviderBtn").addEventListener("click", async () 
     }
 });
 
-// ---------- STATS ----------
+// ------------------------------
+// LOAD STATS
+// ------------------------------
 async function loadStats() {
     if (!currentProvider || !currentProvider.id) return;
 
@@ -68,13 +115,16 @@ async function loadStats() {
     }
 }
 
-// ---------- SERVICES ----------
+// ------------------------------
+// LOAD SERVICES
+// ------------------------------
 async function loadServices() {
     if (!currentProvider || !currentProvider.id) return;
 
     try {
         const services = await API.getServicesForProvider(currentProvider.id);
         const tbody = document.querySelector("#svc-table tbody");
+
         tbody.innerHTML = "";
 
         services.forEach(svc => {
@@ -90,6 +140,7 @@ async function loadServices() {
     }
 }
 
+// ADD SERVICE
 document.getElementById("addServiceBtn").addEventListener("click", async () => {
     if (!currentProvider || !currentProvider.id) {
         alert("Please save your provider profile first.");
@@ -97,15 +148,15 @@ document.getElementById("addServiceBtn").addEventListener("click", async () => {
     }
 
     const title = document.getElementById("svc-title").value.trim();
-    const desc = document.getElementById("svc-desc").value.trim();
+    const description = document.getElementById("svc-desc").value.trim();
 
-    if (!title || !desc) {
+    if (!title || !description) {
         alert("Please enter a title and description.");
         return;
     }
 
     try {
-        await API.createService(currentProvider.id, { title, description: desc });
+        await API.createService(currentProvider.id, { title, description });
         document.getElementById("svc-title").value = "";
         document.getElementById("svc-desc").value = "";
         await loadServices();
@@ -116,13 +167,16 @@ document.getElementById("addServiceBtn").addEventListener("click", async () => {
     }
 });
 
-// ---------- REVIEWS ----------
+// ------------------------------
+// LOAD REVIEWS
+// ------------------------------
 async function loadReviews() {
     if (!currentProvider || !currentProvider.id) return;
 
     try {
         const reviews = await API.getReviewsForProvider(currentProvider.id);
         const box = document.getElementById("reviews");
+
         box.innerHTML = "";
 
         if (!reviews || reviews.length === 0) {
@@ -146,12 +200,12 @@ async function loadReviews() {
     }
 }
 
-// ---------- LOGOUT ----------
+
 document.getElementById("tutor-logout").addEventListener("click", (e) => {
     e.preventDefault();
     localStorage.removeItem("provider");
-    window.location.href = "login.html";
+    window.location.href = "tutor-login.html";
 });
 
-
+// Initialize dashboard
 initTutorDashboard();

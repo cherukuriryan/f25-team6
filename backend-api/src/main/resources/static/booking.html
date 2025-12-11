@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Book a Session – SpartanPro</title>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">
+        <span class="logo-blue">Spartan</span><span class="logo-gold">Pro</span>
+        <span class="role">(Student)</span>
+    </div>
+
+    <nav class="header-right">
+        <a href="find-tutor.html">Back</a>
+        <a class="btn small red" onclick="logout()">Logout</a>
+    </nav>
+</header>
+
+<main class="wrapper">
+
+    <h1 class="page-title">Book a Session</h1>
+
+   
+
+    <section class="card">
+        <h2>Select a Time Slot</h2>
+
+        <select id="slotSelect" class="input">
+            <option value="">Loading time slots...</option>
+        </select>
+
+        <button class="btn primary full" id="bookBtn">Confirm Booking</button>
+    </section>
+
+    <section id="confirmBox" class="card" style="display:none;">
+        <h2>Booking Confirmed!</h2>
+        <p>Your session has been booked.</p>
+    </section>
+
+</main>
+
+<script src="js/api.js"></script>
+<script src="js/booking.js"></script>
+
+</body>
+</html>

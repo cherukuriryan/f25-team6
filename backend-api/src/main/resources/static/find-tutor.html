@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
   <title>Find a Tutor – SpartanPro</title>
 </head>
 
 <body>
+
+<!-- REVIEW MODAL -->
+<div id="reviewModal" class="modal" style="display:none;">
+  <div class="modal-content">
+      <h2>Write a Review</h2>
+
+      <label>Rating (1–5)</label>
+      <input type="number" id="reviewRating" min="1" max="5" class="input">
+
+      <label>Comment</label>
+      <textarea id="reviewComment" class="input"></textarea>
+
+      <button class="btn primary" onclick="submitReview()">Submit</button>
+      <button class="btn red" onclick="closeReviewModal()">Cancel</button>
+  </div>
+</div>
 
 <header class="header">
   <div class="logo">
@@ -16,7 +32,7 @@
   </div>
 
   <nav class="nav-links">
-    <a href="student-profile.html">Home</a>
+    <a href="student-profile.html" class="link">Profile</a>
     <a class="btn small red" href="#" onclick="logout()">Logout</a>
   </nav>
 </header>
@@ -25,14 +41,17 @@
 
   <h1 class="page-title">Find A Tutor</h1>
 
-  
   <div id="noSubjects" class="no-subject-box" style="display:none;">
-      <h2>No Subscribed Subjects...</h2>
-      <p>Click on <a href="student-profile.html" class="profile-link">Profile</a> to subscribe to subjects</p>
+      <h2>No subscribed subjects</h2>
+      <p>Go to <a href="student-profile.html" class="profile-link">Profile</a> to select subjects.</p>
   </div>
 
-  
+  <!-- Tutors appear here -->
   <div id="results" class="tutor-results"></div>
+
+  <!-- Reviews appear here -->
+  
+  <div id="reviews" class="review-list"></div>
 
   <footer class="footer">SpartanPro</footer>
 </main>

@@ -10,62 +10,60 @@
 
 <body>
 
-  <!-- HEADER LOGO -->
+  <!-- HEADER -->
   <header class="simple-header">
     <div class="logo">
       <span class="logo-blue">Spartan</span><span class="logo-gold">Pro</span>
     </div>
   </header>
 
-  <!-- LOGIN CONTAINER -->
+  <!-- MAIN AUTH WRAPPER -->
   <div class="auth-wrapper">
-
     <div class="auth-card">
 
+      <!-- LOGIN -->
       <h2 class="auth-title">Login</h2>
 
-      <form id="login-form" class="auth-form">
+      <form id="loginForm" class="auth-form">
         <label>Email :</label>
-        <input type="email" id="login-email" required>
+        <input type="email" id="loginEmail" required>
 
         <label>Password :</label>
-        <input type="password" id="login-password" required>
+        <input type="password" id="loginPassword" required>
 
         <button type="submit" class="btn primary full">Login</button>
       </form>
 
-      <!-- Just a divider now -->
       <hr class="divider" style="margin-top: 20px;">
 
-      <!-- SIGNUP SECTION -->
-      <h2 id="signup" class="auth-title">Create Account</h2>
+      <!-- STUDENT SIGNUP -->
+      <h2 class="auth-title">Create Account</h2>
 
-      <p class="center small">
+      <!-- Tutor links -->
+      <div class="center small" style="margin-bottom: 10px;">
         Already a tutor?
-        <a href="tutor-login.html" class="link">Log in as Tutor</a>
-      </p>
+        <a href="tutor-login.html" class="link">Log in here</a>
+      </div>
 
-      <p class="center small">
+      <div class="center small" style="margin-bottom: 15px;">
         Want to become a tutor?
-      </p>
+      </div>
 
-      <p class="center">
+      <div class="center" style="margin-bottom: 20px;">
         <a href="tutor-signup.html" class="btn small outline">Sign Up as Tutor</a>
-      </p>
+      </div>
 
-      <form id="signup-form" class="auth-form">
+      <!-- STUDENT SIGNUP FORM -->
+      <form id="signupForm" class="auth-form">
 
         <label>Name :</label>
-        <input type="text" id="signup-name" required>
+        <input type="text" id="signName" required>
 
         <label>Student Email :</label>
-        <input type="email" id="signup-email" required>
+        <input type="email" id="signEmail" required>
 
         <label>Password :</label>
-        <input type="password" id="signup-password" required>
-
-        <label>Confirm Password :</label>
-        <input type="password" id="signup-confirm" required>
+        <input type="password" id="signPassword" required>
 
         <button class="btn primary full">Sign Up as Student</button>
 
@@ -74,10 +72,10 @@
     </div>
   </div>
 
-  <footer class="footer">
-    SpartanPro
-  </footer>
+  <footer class="footer">SpartanPro</footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/login.js"></script>
 
 </body>
-
 </html>

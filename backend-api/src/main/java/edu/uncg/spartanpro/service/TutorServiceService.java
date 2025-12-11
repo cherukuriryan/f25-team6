@@ -26,6 +26,6 @@ public class TutorServiceService {
     }
 
     public List<TutorService> getServicesByProvider(Long providerId) {
-        return serviceRepo.findByProviderId(providerId);
+        return serviceRepo.findByProvider_Id(providerId);  
     }
 }
